@@ -1,0 +1,28 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Cửa hàng giày bóng đá Huế{% endblock %}
+
+{% block introduce %}
+<div class="container my-5">
+    <!-- Hero Section -->
+    <div class="row align-items-center bg-light rounded shadow p-4">
+        <div class="col-lg-6">
+            <h1 class="display-4 text-primary">Cửa hàng giày bóng đá Huế</h1>
+            <p class="lead mt-3">
+                Nơi cung cấp giày bóng đá chính hãng hàng đầu tại Huế! 
+                Hãy khám phá những mẫu giày phù hợp nhất cho mọi loại sân đấu và khẳng định phong cách của bạn trên sân cỏ.
+            </p>
+            <ul class="list-unstyled">
+                <li><i class="bi bi-check-circle text-success"></i> Đa dạng mẫu mã từ <strong>Adidas, Nike, Puma</strong></li>
+                <li><i class="bi bi-check-circle text-success"></i> Phù hợp cho sân cỏ tự nhiên, cỏ nhân tạo, và sân futsal</li>
+                <li><i class="bi bi-check-circle text-success"></i> Dịch vụ tư vấn chuyên nghiệp, tận tâm</li>
+                <li><i class="bi bi-check-circle text-success"></i> Chính sách bảo hành và đổi trả linh hoạt</li>
+            </ul>
+            <a href="{% url 'home' %}" class="btn btn-primary btn-lg mt-3">Khám phá ngay</a>
+        </div>
+        <div class="col-lg-6 text-center">
+          <img src="{% static 'app/images/image_store.png' %}" class="img-fluid rounded shadow-lg" alt="Giày bóng đá Huế">
+        </div>
+    </div>
+</div>
+{% endblock introduce %}

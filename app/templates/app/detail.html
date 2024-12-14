@@ -1,0 +1,64 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block detail_page %}
+<section class="py-5">
+  <div class="container">
+    <div class="row gx-5">
+      <aside class="col-lg-6">
+        <div class="border rounded-4 mb-3 d-flex justify-content-center">
+          <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="{{product.ImageURL}}" />
+        </div>
+        <h5 class="text-uppercase text-center">Sản phẩm tương tự</h5>
+        <div class="d-flex justify-content-center mb-3">
+        {% for product_image in products %}
+          <a class="border mx-1 rounded-2" href="{% url 'detail' %}?id={{product_image.id}}">
+            <img width="60" height="60" class="rounded-2" src="{{product_image.ImageURL}}" />
+          </a>
+        {% endfor %}
+        </div>
+
+      </aside>
+      <main class="col-lg-6">
+        <div class="ps-lg-3">
+          <h4 class="title text-dark text-wrap">
+            {{product.name}}
+          </h4>
+          <div class="mb-3">
+            <span class="h5 text-color-red"><span style="color:red;"><strong>{{product.price | floatformat:2}}$</strong></span>  <span><del>{{product.price_origin | floatformat:2}}$</del></span></span>
+            <span class="text-muted">/per pair of shoes</span>
+          </div>
+
+          <p>
+            {{product.detail}}
+          </p>
+
+          <div class="row">
+            <dt class="col-3">Type:</dt>
+            <dd class="col-9">Shoes</dd>
+            <dt class="col-3">Brand:</dt>
+            <dd class="col-9">
+              {% for product_brand in product_category %}
+              {{product_brand}}
+              {% endfor %}
+            </dd>
+          </div>
+
+          <hr />
+
+          <div class="col-md-4 col-6 mb-3">
+            <label class="mb-2 d-block">Quantity</label>
+            <div class="input-group mb-3" style="width: 170px;">
+              <button data-product={{product.id}} data-action="add" class="btn-outline-dark btn add-btn update-cart border-end-0">+</button>
+              <div class="text-center border border-secondary px-3 pt-1">{{quantity}}</div>
+              <button data-product={{product.id}} data-action="remove" class="btn btn-outline-dark add-button update-cart border-start-0">&#8722;</button>
+            </div>
+          </div>
+          <a href="{% url 'checkout' %}" class="btn btn-warning shadow-0"> Buy now </a>
+          <button data-product={{product.id}} data-action="add" class="btn btn-primary shadow-0 update-cart"> Add to cart </button>
+          <a href="{% url 'home' %}" class="btn btn-light border border-secondary py-2 icon-hover px-3"> Save </a>
+        </div>
+      </main>
+    </div>
+  </div>
+</section>
+{% endblock detail_page %}
